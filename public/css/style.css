@@ -1,0 +1,114 @@
+html {
+    max-width: 100%;
+}
+
+body {
+    height : 100%;
+    max-width: 100%;
+    overflow-x:hidden;
+}
+
+code {
+    background-color: ghostwhite;
+    border-radius: 5px;
+}
+
+p {
+    text-align: justify;
+}
+.container {
+    max-width :100%;
+}
+
+.row {
+    padding: 0 15% 5% 15%;
+}
+
+.w-image {
+     padding: 5% 5% 5% 5%;
+ }
+
+.debut {
+    padding-top : 7%;
+    width :100%;
+}
+.logoGSB {
+    width: 100%; padding-left: 25%;
+}
+
+.screen {
+    margin-top: 3%;
+    border: solid 1px;
+    border-color: #bbbbbb;
+}
+
+.Title1 {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    background-color: rgba(145,208,253,0.5);
+    border-radius: 25px;
+    margin-bottom: 5%;
+}
+.Title2 {
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 50%;
+    margin-top: 5%;
+    text-align: center;
+    background-color: rgba(145,208,253,0.2);
+    border-radius: 25px;
+
+}
+.explication {
+    margin-top: 5%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    height: 3%;
+    width: 100%;
+    background-color:#2d2d2d;
+    color: #bbb;
+    text-align:center;
+}
+footer p{
+    margin-top: 3px;
+    color: #bbb;
+}
+footer a{
+    color: #bbb;
+}
+
+/**
+ * Responsive
+ */
+
+
+@media screen and (max-width: 600px) {
+    .debut {
+        padding-top : 30%;
+    }
+    .container {
+        max-width : 100%;
+    }
+    footer {
+        height: 6%;
+    }
+    .presentation {
+        padding : 8%;
+    }
+    img {
+        width:105%;
+    }
+}
+
+/*
+ *----------------------FONT
+ */
+
+@font-face {
+    font-family: 'riesling';
+    src: url('font/riesling.ttf');
+}
