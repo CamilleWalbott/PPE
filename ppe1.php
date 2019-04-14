@@ -8,19 +8,21 @@
 <div class="container bg-light">
     <div class="row text-black presentation">
         <div class="col-md-12">
+
+            <!--  PRESENTATION PPE 1 -->
             <h1 class="display-4" style="padding-top: 3%">
                 PPE 1 - Développement de la partie comptable </h1>
             <p class="lead text-justify"> extrait du Cahier des charges : "
                 <span class="font-italic">
-                     suivi des frais est actuellement géré de plusieurs façons selon le
+                     Le suivi des frais est actuellement géré de plusieurs façons selon le
                 laboratoire d'origine des visiteurs. On souhaite uniformiser cette gestion
                 L'application doit permettre d'enregistrer tout frais engagé, aussi bien pour l'activité directe
                 (déplacement, restauration et hébergement) que pour les activités annexes (événementiel, conférences,
                 autres), et de présenter un suivi daté des opérations menées par le service comptable (réception des
-                pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
+                pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué)
                 </span> ".
             </p>
-            <p class="text-justify font-weight-bold">
+            <p class="text-center font-weight-bold">
                 Il est question ici de construire l'interface du site de GSB destinée aux comptables de l'entreprise.
             </p>
             <hr class="my-4">
@@ -29,62 +31,62 @@
                     charges</a>
                 <a class="btn btn-info" href="">Autres téléchargements</a>
             </div>
-
-
         </div>
     </div>
+
+
+
+
+
     <div class="row w-image text-black bg-white">
         <div class="col-md-12">
             <div id="TDM" class="Title1">
                 <i class="fas fa-code"></i> Tâche n° 1 : Coder la page de validation d’une fiche de frais
             </div>
+
+            <!--  ____ TABLE DES MATIERES ____   -->
             <div class="list-group">
                 <li class="list-group-item list-group-item-info">Table des matières</li>
                 <a href="#step1" class="list-group-item list-group-item-action ">
                     1. Création d'une nouvelle table dans la base de données
                 </a>
                 <a href="#step2" class="list-group-item list-group-item-action">
-                    2. Ajout d'une liste déroulante dans la page d'authentification
+                    2. Modifications des fonctions d'authentification
                 </a>
                 <a href="#step3" class="list-group-item list-group-item-action">
-                    3. Modifications des fonctions d'authentification
+                    3. Gestion de l'affichage après connexion selon la fonction de l'utilisateur
                 </a>
                 <a href="#step4" class="list-group-item list-group-item-action">
-                    4. Ajout de données fictives dans la table 'Comptable'
+                    4. Création vue et controleur de validation de frais
                 </a>
                 <a href="#step5" class="list-group-item list-group-item-action">
-                    5. Gestion de l'affichage après connexion selon la fonction de l'utilisateur
+                    5. Récupération de la liste des visiteurs
                 </a>
                 <a href="#step6" class="list-group-item list-group-item-action">
-                    6. Création vue et controleur de validation de frais
+                    6. Réupération des frais Forfait du visiteur et du mois sélectionné
                 </a>
                 <a href="#step7" class="list-group-item list-group-item-action">
-                    7. Récupération de la liste des visiteurs
+                    7. Boutons "corriger" et "réinitialiser"
                 </a>
                 <a href="#step8" class="list-group-item list-group-item-action">
-                    8. Réupération des frais Forfait du visiteur et du mois sélectionné
+                    8. Affichage des frais hors forfait
                 </a>
                 <a href="#step9" class="list-group-item list-group-item-action">
-                    9. Boutons "corriger" et "réinitialiser"
+
                 </a>
                 <a href="#step10" class="list-group-item list-group-item-action">
-                    10. Affichage des frais hors forfait
-                </a>
-                <a href="#step11" class="list-group-item list-group-item-action">
 
                 </a>
-                <a href="#step12" class="list-group-item list-group-item-action">
-
-                </a>
-
             </div>
+
+            <!-- ________________________________________________ETAPE 1 _________________________________________ -->
             <div id="step1" class="step">
                 <div class="Title2 mx-auto">
                     1. Création d'une nouvelle table dans la base de données
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
-                <p class="text-justify explication">
 
+                <p class="text-justify explication">
                     Le site va proposer 2 interfaces selon si l'utilisateur est comptable ou visiteur. Chacun n'aura pas
                     accès aux mêmes fonctionnalités.
                     Pour séparer ces deux interfaces, ils faut distinguer les deux catégories d'utilisateurs potentiels.
@@ -100,7 +102,6 @@
                     <li>lignefraishorsforfait</li>
                 </ul>
                 <p class="text-justify">
-
                     Modifier le nom de la table "visiteur" et y ajouter une colonne permettant de déterminer la fonction de
                     l'utilisateur peut s'averer être complexe, notamment car cette table est utilisée dans le code source
                     (ce qui demanderait de le changer lui aussi, toute les fois ou cette table est utilisée). Bien que la
@@ -113,15 +114,26 @@
                     <br>
                     <br>
                 </p>
-                <img class="mx-auto d-block" src="public/img/screens/BDD_TableComptable.PNG" alt="creation table comptables">
+
+                <img class="mx-auto d-block screen" src="public/img/screens/BDD_TableComptable.PNG" alt="creation table comptables">
+
+                <p class="text-justify explication">
+                    Pour pouvoir par la suite accéder à la page d'intranet du coté des comptables, il faut ajouter des
+                    données fictives, entrées aléatoirement.
+                </p>
+
+                <img class="mx-auto d-block screen" src="public/img/screens/BDD_TableComptable_ajout.PNG" alt="creation vues">
+
             </div>
+
+            <!-- ________________________________________________ETAPE 2 _________________________________________ -->
             <div class="step">
                 <div id="step2" class="Title2 mx-auto">
-                    2. Ajout d'une liste déroulante dans la page d'authentification
+                    2. Modification des fonctions d'authentification
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
-                <p class="text-justify explication">
 
+                <p class="text-justify explication">
                     Afin de déterminer le statut de l'utilisateur, à savoir s'il est visiteur ou comptable, et d'éviter la
                     lecture de 2 tables entières dans la base de données du coté PHP,
                     il est préférable d'ajouter une liste déroulante, disponible directement dans les classes du framework Bootstrap,
@@ -140,16 +152,8 @@
                 </code></pre>
 
                 <img class="mx-auto d-block screen" src="public/img/screens/AuthViewScreen2.PNG" alt="creation table comptables">
-            </div>
-            <div id="step3" class="step">
-
-                <div class="Title2 mx-auto">
-                    3. Modifications des fonctions d'authentification
-                    <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
-                </div>
 
                 <p class="text-justify explication">
-
                     Afin que l'information de statut du visiteur soit récupérée avec la méthode "POST", l'attribut
                     "name" a été rajouté à la liste déroulante dans la partie HTML (cf code ci-dessus).
                     <br>
@@ -160,11 +164,12 @@
                     Comme la fonction getInfosVisiteur(), on crée la fonction getInfosComptable.
                     <br>
                 </p>
+
                 <p class="font-weight-bold">
                     Récupération de la variable "fct" et comparaison dans le fichier "c_connexion.php":
                 </p>
-                <pre>
-                    <code class="php">
+
+                <pre><code class="php">
 switch ($action) {
 case 'demandeConnexion':
     include 'vues/v_connexion.php';
@@ -203,13 +208,14 @@ case 'valideConnexion':
     }
 
     break;
-                    </code>
-                </pre>
+                    </code></pre>
+
+
                 <p class="font-weight-bold">
                     Création de la fonction getInfosComptable() dans le fichier "class.pdogsb.inc.php" :
                 </p>
-                <pre>
-                    <code class="php">
+
+                <pre><code class="php">
 public function getInfosComptable($login, $mdp)
     {
         $requetePrepare = PdoGsb::$monPdo->prepare(
@@ -223,30 +229,18 @@ public function getInfosComptable($login, $mdp)
         $requetePrepare->execute();
         return $requetePrepare->fetch();
     }
-                    </code>
-                </pre>
+                    </code></pre>
             </div>
 
-            <div id="step4" class="step">
+
+            <!-- ________________________________________________ETAPE 3 _________________________________________ -->
+            <div id="step3" class="step">
                 <div class="Title2 mx-auto">
-                    4. Ajout de données fictives dans la table 'Comptable'
+                    3. Gestion de l'affichage après connexion selon la fonction de l'utilisateur
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
+
                 <p class="text-justify explication">
-
-                    Pour pouvoir par la suite accéder à la page d'intranet du coté des comptables, il faut ajouter des
-                    données fictives, entrées aléatoirement.
-                </p>
-                <img class="mx-auto d-block" src="public/img/screens/BDD_TableComptable_ajout.PNG" alt="creation vues">
-            </div>
-
-            <div id="step5" class="step">
-                <div class="Title2 mx-auto">
-                    5. Gestion de l'affichage après connexion selon la fonction de l'utilisateur
-                    <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
-                </div>
-                <p class="text-justify explication">
-
                     Après avoir cliqué sur le bouton "connexion", et contrôlé les paramètres entrés (abordé par la
                     suite), l'index redirige vers le controleur c_acceuil, qui lui se charge d'afficher l'entete et
                     l'accueil de l'intranet.
@@ -254,10 +248,10 @@ public function getInfosComptable($login, $mdp)
                     Etant donné qu'il existe 2 status distincts, (Comptable et visiteur), on crée 2 vues d'accueils et 2
                     vues d'entêtes, une pour chaque statuts, que la vue accueil appelera selon le statut :
                 </p>
-                <img class="mx-auto d-block" src="public/img/screens/sourcetree_createviews.PNG" alt="creation vues">
+
+                <img class="mx-auto d-block screen" src="public/img/screens/sourcetree_createviews.PNG" alt="creation vues">
 
                 <p class="text-justify explication">
-
                     Pour contrôler la connexion, l'index va faire appelle à une fonction 'estConnecte()' dans le fichier
                     'fct.inc.php'. Cette fonction vérifie si la variable $_SESSION (qui est un tableau) est initiée et
                     possède une valeur 'id'.
@@ -276,12 +270,13 @@ function connecter($id, $nom, $prenom, $fct)
     $_SESSION['prenom'] = $prenom;
     $_SESSION['fct'] = $fct;
 }
-
                 </code></pre>
+
 
                 <p class="font-weight-bold">
                     On oublie pas de modifier le controleur 'c_connexion.php', qui appelle la fonction 'connecter()' afin de bien prendre en compte le nouveau paramètre :
                 </p>
+
                 <pre><code class="php">
 if ($fct == 'Visiteur') {
     $user = $pdo->getInfosVisiteur($login, $mdp);
@@ -310,7 +305,7 @@ if ($fct == 'Visiteur') {
         header('Location: index.php');
     }
 }
-                    </code> </pre>
+                    </code></pre>
 
                 <p class="font-weight-bold">
                     On modifie le fichier "v_accueil.php" qui va rediriger vers la bonne vue selon le paramètre $_SESSION['fct'] :
@@ -322,17 +317,21 @@ if ($_SESSION['fct']==='Visiteur') {
 } elseif ($_SESSION['fct']==='Comptable'){
     include 'v_accueil_comptable.php';
 }
-                    </code> </pre>
+                    </code></pre>
 
 
                 <p class="font-weight-bold">
                     On crée la vue "v_acceuil_comptable" :
                 </p>
-                <img class="mx-auto d-block" src="public/img/screens/vueComptableAccueil.PNG" alt="creation vue comptable">
 
-                <p> Enfin, on modifie les liens de redirection des boutons de l'accueil et de l'entête (concernant dans
+                <img class="mx-auto d-block screen" src="public/img/screens/vueComptableAccueil.PNG" alt="creation vue comptable">
+
+                <p>
+                    Enfin, on modifie les liens de redirection des boutons de l'accueil et de l'entête (concernant dans
                     un premier temps la validation des frais) en y ajoutant un uc et une action qui seront réabordées
-                    dans le point suivant:</p>
+                    dans le point suivant:
+                </p>
+
                 <pre><code class="html">
  &lt;li  &lt;?php if ($uc == 'validationFrais') { ?> class="active" &lt;?php } ?>>
      &lt;a href="index.php?uc=validationFrais&action=nValue">
@@ -340,23 +339,27 @@ if ($_SESSION['fct']==='Visiteur') {
          Valider les fiches de frais
      &lt;/a>
   &lt;/li>
-                    </code> </pre>
+                    </code>
+                </pre>
+         </div>
 
-
-        </div>
-
-
-            <div id="step6" class="step">
+            <!-- ________________________________________________ETAPE 4 _________________________________________ -->
+            <div id="step4" class="step">
                 <div class="Title2 mx-auto">
-                    6. Création vue et controleur de validation de frais
+                    4. Création vue et controleur de validation de frais
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
+
                 <p class="text-justify explication">
                     Comme dit dans le point précédent, on crée une nouvelle vue et un nouveau controleur, respectivement de noms "v_validationfrais.php" et "c_validationfrais".
-
                 </p>
-                <img class="mx-auto d-block" src="public/img/screens/sourcetree_createcontrolerview_validationfrais.PNG" alt="creation vue controlleur validationfrais">
-                <p class="font-weight-bold explication"> Ensuite, l'on retourne dans l'index pour pouvoir rediriger vers ce nouveau controleur en cas de $uc = "validationfrais" : </p>
+
+                <img class="mx-auto d-block screen" src="public/img/screens/sourcetree_createcontrolerview_validationfrais.PNG" alt="creation vue controlleur validationfrais">
+
+                <p class="font-weight-bold explication">
+                    Ensuite, l'on retourne dans l'index pour pouvoir rediriger vers ce nouveau controleur en cas de $uc = "validationfrais" :
+                </p>
+
                 <pre><code class="php">
 switch ($uc) {
 case 'connexion':
@@ -379,28 +382,34 @@ case 'validationFrais':
     break;
 }
                     </code></pre>
-                <p class="font-weight-bold explication">On se positionne maintenant dans le nouveau controleur, pour pouvoir y récuperer et contrôler l'action reçue par la methode get : </p>
+
+                <p class="font-weight-bold explication">
+                    On se positionne maintenant dans le nouveau controleur, pour pouvoir y récuperer et contrôler l'action reçue par la methode get :
+                </p>
+
                 <pre><code class="php">
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 if ($action ==='nValue'){ };
 require 'vues/v_validationfrais.php';
-
                     </code> </pre>
-
-
             </div>
-            <div id="step7" class="step">
+
+
+            <!-- ________________________________________________ETAPE 5 _________________________________________ -->
+            <div id="step5" class="step">
                 <div class="Title2 mx-auto">
-                    7. Récupération de la liste des visiteurs et des mois correspondants
+                    5. Récupération de la liste des visiteurs et des mois correspondants
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
+
                 <p class="text-justify explication">
                     Afin de pouvoir récupérer les visiteurs, et d'en utiliser leurs données par la suite, on crée une
                     fonction getAllVisiteurs() dans la classe "class.pdogsb.inc.php" :
                 </p>
+
                 <br>
-                <pre>
-                    <code class="php">
+
+                <pre><code class="php">
 /**
   * Retourne un tableau associatif avec le nom, prenom et id de chaque visiteurs de la table visiteur
   */
@@ -412,30 +421,38 @@ public function getAllVisiteurs(){
    $requetePrepare->execute();
    return $requetePrepare->fetchAll();
 }
-                    </code>
-                </pre>
+                    </code></pre>
+
                 <p class="text-justify explication">
                     Puis on l'appelle dans le controleur "c_validationfrais.php", en l'attribuant à une variable
-                    $lesVisiteurs, à la suite de la récupération de l'action. </p>
-                <p class="text-justify ">
+                    $lesVisiteurs, à la suite de la récupération de l'action.
+                </p>
+                <p class="text-justify">
                     On crée ensuite dans la vue un premier formulaire avec un Selecteur, ou l'on va afficher tous les
                     noms des visiteurs récupérés, puis un second qui va récupérer les mois de chaque visiteurs. Pour
                     pouvoir afficher les mois du premier visiteur affiché par défaut dans le premier selecteur, l'on
                     doit récupérer l'id dans la première ligne du tableau $lesVisiteurs, et on le met en paramètre de la
-                    fonction getLesMoisDisponibles() issue de la classe PDO</p>
-                <p class="text-justify ">
+                    fonction getLesMoisDisponibles() issue de la classe PDO
+                </p>
+                <p class="text-justify">
                     A chaque sélection de visiteur, le controleur doit pouvoir afficher les mois correspondant à ce
                     visiteur. Pour cela, et pour éviter d'utiliser un bouton à chaque changement (qui rendrait la
                     manipulation longue), on va utiliser du javascript pour qu'a chaque sélection de visiteur
                     (onChange), un submit soit envoyé et que le controleur récupère la liste des mois correspondant. On
                     va donc créer également une nouvelle action 'valueName", qui indique au controleur que l'on a
                     changé de visiteur. Le submit va alors pouvoir envoyer avec la méthode POST l'id du visiteur
-                    choisi.</p>
-                <p class="text-justify ">
+                    choisi.
+                </p>
+                <p class="text-justify">
                     Enfin, pour que ce nom reste affiché après l'avoir selectionné, on teste avec un if si l'id
-                    correspond au nom choisi pour mettre ce choix en "selected"</p>
+                    correspond au nom choisi pour mettre ce choix en "selected"
+                </p>
                 <br>
-                <p class="font-weight-bold"> "c_validationfrais.php" :</p>
+
+                <p class="font-weight-bold">
+                    "c_validationfrais.php" :
+                </p>
+
                 <pre><code class="php">
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $lesVisiteurs = $pdo->getAllVisiteurs();
@@ -450,10 +467,12 @@ if ($action ==='nValue'){
     $selectedId = $_POST['selectName'];
     $lesMoisVisiteur = $pdo->getLesMoisDisponibles($selectedId);
     $selectedMonth = $lesMoisVisiteur[0]['mois'];
-                    </code> </pre>
+                    </code></pre>
 
+                <p class="font-weight-bold">
+                    "v_validationfrais.php" :
+                </p>
 
-                <p class="font-weight-bold"> "v_validationfrais.php" :</p>
                 <pre><code class="html">
 &lt;div class="container">
       &lt;div class="row">
@@ -473,7 +492,7 @@ if ($action ==='nValue'){
               &lt;/form>
 
             Mois :
-            <!-- 'month' choice select -->
+            &lt;!-- 'month' choice select -->
               &lt;form id='formulaireMoisVisiteur' method='post' action='index.php?uc=validationFrais&action=valueMonth&id=  &lt;?php echo $selectedId ?>'>
                   &lt;select name ="selectMonth" onChange='onMonthSelectChange()'>
                       &lt;?php
@@ -489,7 +508,11 @@ if ($action ==='nValue'){
           &lt;/div>
       &lt;/div>
                     </code> </pre>
-                <p class="font-weight-bold"> javascript "v_validationfrais.php" :</p>
+
+                <p class="font-weight-bold">
+                    javascript "v_validationfrais.php" :
+                </p>
+
                 <pre><code class="javascript">
  function onVisitorSelectChange() {
         document.getElementById('formulaireVisiteur').submit();
@@ -497,14 +520,16 @@ if ($action ==='nValue'){
 function onMonthSelectChange() {
         document.getElementById('formulaireMoisVisiteur').submit();
     }
-                    </code> </pre>
+                    </code></pre>
             </div>
-            <div id="step8" class="step">
-                <div class="Title2 mx-auto">
-                    8. Réupération des frais Forfait du visiteur et du mois sélectionné
 
+            <!-- ________________________________________________ETAPE 6 _________________________________________ -->
+            <div id="step6" class="step">
+                <div class="Title2 mx-auto">
+                    6. Réupération des frais Forfait du visiteur et du mois sélectionné
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
+
                 <p class="text-justify explication">
                     Après avoir selectionné un mois pour un visiteur, le formulaire du mois va rediriger vers une
                     nouvelle action du nom de "valueMonth". Dans cette action, l'id du visiteur et le mois vont être
@@ -515,6 +540,7 @@ function onMonthSelectChange() {
                 <p class="text-justify explication font-weight-bold">
                     Chaque donnée récupérée par cette fonction va être stockée dans une variable initialement mise à "0" (en cas ou il y aurait une erreur, il vaut mieux afficher un zéro):
                 </p>
+
                 <pre><code class="php">
 }elseif ($action ==='valueMonth'){
     $selectedId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
@@ -548,8 +574,10 @@ $lesFraisVisiteur = $pdo->getLesFraisForfait($selectedId,$selectedMonth);
          }
      }
  }
-                    </code> </pre>
-                <p class="text-justify font-weight-bold"> affichage dans la vue :
+                    </code></pre>
+
+                <p class="text-justify font-weight-bold">
+                    Affichage dans la vue :
                 </p>
 
                 <pre><code class="html">
@@ -584,20 +612,23 @@ $lesFraisVisiteur = $pdo->getLesFraisForfait($selectedId,$selectedMonth);
             &lt;/form>
         &lt;/div>
     &lt;/div>
-                    </code> </pre>
+                    </code></pre>
             </div>
-            <div id="step9" class="step">
-                <div class="Title2 mx-auto">
-                    9. Boutons "corriger" et "réinitialiser"
 
+            <!-- ________________________________________________ETAPE 7 _________________________________________ -->
+            <div id="step7" class="step">
+                <div class="Title2 mx-auto">
+                    7. Boutons "corriger" et "réinitialiser"
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
+
                 <p class="text-justify explication">
                     La encore, une nouvelle action va être créée pour chaque bouton.
                     Le bouton "corriger" est associé au formulaire, et va donc activer le submit. L'action
                     "valueCorrect" sera donc mise dans la propriété action du formulaire, et les données insérées dans
                     le formulaire seront transmises via la méthode POST.
-                </p><p class=" text-justify">
+                </p>
+                <p class=" text-justify">
                     Le bouton "réinitialiser" sera quant à lui un simple lien de classe "button" pour en hériter son
                     design, et aura pour href le lien avec l'action "valueReset". Chaque bouton renvoie évidemment l'id
                     et le mois selectionné pour ne pas perdre l'affichage de ces derniers dans les selecteurs au dessus.
@@ -606,7 +637,8 @@ $lesFraisVisiteur = $pdo->getLesFraisForfait($selectedId,$selectedMonth);
                     Deux div sont également ajoutées en dessous : une verte pour confirmer que la correction a été faite, une autre pour signaler que les frais entrés ne sont pas valides.
                     En effet, les frais doivent être des entiers positifs.
                 </p>
-                <img src="public/img/screens/VueComptableValidationFrais.PNG" alt=" Vue comptable validation frais">
+
+                <img class="mx-auto d-block screen" src="public/img/screens/VueComptableValidationFrais.PNG" alt=" Vue comptable validation frais">
 
                 <pre><code class="html">
  &lt;div class="row">
@@ -641,11 +673,10 @@ $lesFraisVisiteur = $pdo->getLesFraisForfait($selectedId,$selectedMonth);
             &lt;/form>
         &lt;/div>
     &lt;/div>
-                    </code>
-                </pre>
+                    </code></pre>
 
-                <img src="public/img/screens/fraisInvalidescreen.PNG" alt=" frais non valides">
-                <img src="public/img/screens/fraiscorriges.PNG" alt=" frais corrigés">
+                <img class="mx-auto d-block screen" src="public/img/screens/fraisInvalidescreen.PNG" alt=" frais non valides">
+                <img class="mx-auto d-block screen" src="public/img/screens/fraiscorriges.PNG" alt=" frais corrigés">
 
                 <p class="explication text-justify">
                     Du coté du controleur, on va donc comparer à nouveau l'action. Si celle-ci est valueReset, la page
@@ -657,7 +688,8 @@ $lesFraisVisiteur = $pdo->getLesFraisForfait($selectedId,$selectedMonth);
                 <p> On oublie pas également de rajouter les variables $hidden et $hidden 2, initialement égale à
                     "hidden" pour pouvoir masquer les divs. Lors de la correction ou si les chiffres saisis ne sont pas
                     des entiers positifs, la variable correspondante est remise a vide afin de pouvoir afficher la div
-                    d'alerte.</p>
+                    d'alerte.
+                </p>
 
                 <pre><code class="php">
 $hidden2 = $hidden = 'hidden';
@@ -699,20 +731,23 @@ $hidden2 = $hidden = 'hidden';
         $hidden2 = '';
     }
 }
-                    </code>
-                </pre>
+                    </code></pre>
             </div>
-            <div id="step10" class="step">
+
+            <!-- ________________________________________________ETAPE 8 _________________________________________ -->
+            <div id="step8" class="step">
                 <div class="Title2 mx-auto">
-                    10. Affichage des frais hors forfait
+                    8. Affichage des frais hors forfait
                     <a class="badge badge-info" style="margin-bottom: 1%" href="#TDM"><i class="fas fa-bars"></i></a>
                 </div>
+
                 <p class="text-justify explication"> Il faut a présent afficher dans la partie inférieur de la page les
                     frais hors forfait, qui seront présentés dans un tableau, avec un frais par ligne.
                     <br>Dans chaque ligne du tableau, on met un formulaire, qui contiendra
-                    ensuite les cases de la lignes, elles mêmes contenant des inputs et des boutons.</p>
+                    ensuite les cases de la lignes, elles mêmes contenant des inputs et des boutons.
+                </p>
 
-                <img src="public/img/screens/VueComptableHorsForfait.PNG" alt="vue comptable hors forfait">
+                <img class="mx-auto d-block screen" src="public/img/screens/VueComptableHorsForfait.PNG" alt="vue comptable hors forfait">
 
                 <p class="text-justify explication font-weight-bold"> Pour ce faire, il
                     faut d'abord récupérer les frais hors forfaits grâce à la méthode getLesFraisHorsForfait() de la
@@ -725,15 +760,13 @@ $lesFraisHFVisiteur = $pdo->getLesFraisHorsForfait($selectedId, $selectedMonth);
 
  //RECUPERATION DES JUSTIFICATIFS
 $nbJustificatifs = $pdo->getNbjustificatifs($selectedId, $selectedMonth);
-
-
                     </code></pre>
+
                 <p class="text-justify font-weight-bold explication">
                     On mets dans un foreach le formulaire et les boutons, en parametrant une nouvelle action pour chaque :
                 </p>
-                <pre>
-                    <code class="html">
 
+                <pre><code class="html">
  &lt;div class="panel panel-orange">
         &lt;div class="panel-heading panel-heading-orange">Descriptif des éléments hors forfait&lt;/div>
             &lt;table class="table table-bordered table-responsive">
@@ -787,9 +820,7 @@ $nbJustificatifs = $pdo->getNbjustificatifs($selectedId, $selectedMonth);
             &lt;br>
        &lt;/div>
  &lt;/div>
-
-                    </code>
-                </pre>
+                    </code></pre>
 
                 <p class="text-justify font-weight-bold explication">
                     On définit maintenant les procédure à suivre selon les actions "HFCorrect", qui corrigera les frais
@@ -798,6 +829,7 @@ $nbJustificatifs = $pdo->getNbjustificatifs($selectedId, $selectedMonth);
                     respectivement majFraisHorForfait(), refusHorsForfait() (fonctions créées dans la classe pdo: cf plus
                     bas) ainsi que majNbJustificatifs() et majEtatFicheFrais() :
                 </p>
+
                 <pre><code class="php">
 }elseif ($action === 'HFCorrect'){
     $selectedId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
@@ -829,10 +861,7 @@ $nbJustificatifs = $pdo->getNbjustificatifs($selectedId, $selectedMonth);
     $pdo->majEtatFicheFrais($selectedId, $selectedMonth, 'VA');
     $hidden4='';
 }
-
                     </code></pre>
-
-
             </div>
 
             <p class="text-justify font-weight-bold explication">
@@ -840,8 +869,8 @@ $nbJustificatifs = $pdo->getNbjustificatifs($selectedId, $selectedMonth);
                 été rajoutée à la classe Pdo. Dans cette deuxième fonction, la terme "REFUSE:" a été ajouté par
                 concaténation au libellé du frais :
             </p>
-            <pre>
-                <code class="php">
+
+            <pre><code class="php">
 public function majFraisHorsForfait($idVisiteur, $mois, $lesFrais){
 
       $date = $lesFrais['date'];
@@ -878,10 +907,8 @@ public function majFraisHorsForfait($idVisiteur, $mois, $lesFrais){
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->execute();
 }
-                </code>
-            </pre>
-
-
+                </code></pre>
+            
         </div>
     </div>
 </div>
